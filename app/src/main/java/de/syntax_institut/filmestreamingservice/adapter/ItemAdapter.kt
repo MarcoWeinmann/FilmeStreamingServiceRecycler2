@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 import de.syntax_institut.filmestreamingservice.R
 import de.syntax_institut.filmestreamingservice.data.model.Movie
@@ -23,6 +24,9 @@ class ItemAdapter(
      */
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // TODO Schreibe hier deinen Code
+        val textView: TextView = itemView.findViewById(R.id.textViewTitel)
+        val imageView22: ImageView = itemView.findViewById(R.id.imageView22)
+
     }
 
     /**
@@ -32,9 +36,11 @@ class ItemAdapter(
 
         // das itemLayout wird gebaut
         // TODO Schreibe hier deinen Code
+        val adapterLayout = LayoutInflater.from(parent.context)
+            .inflate(R.layout.list_item, parent, false)
 
         // und in einem ViewHolder zurückgegeben
-        return TODO()
+        return ItemViewHolder(adapterLayout)
     }
 
     /**
@@ -43,12 +49,15 @@ class ItemAdapter(
      */
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         // TODO Schreibe hier deinen Code
+        val item = dataset[position]
+        holder.textView.text = context.resources.getString(item.stringResource)
+        holder.imageView22.setImageResource(item.imageResource)
     }
 
     /**
      * damit der LayoutManager weiß, wie lang die Liste ist
      */
     override fun getItemCount(): Int {
-        return TODO()
+        return dataset.size
     }
 }

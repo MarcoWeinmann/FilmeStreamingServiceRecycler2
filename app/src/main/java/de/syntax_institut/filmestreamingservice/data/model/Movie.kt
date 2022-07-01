@@ -3,4 +3,8 @@ package de.syntax_institut.filmestreamingservice.data.model
 /**
  * Diese Klasse repräsentiert einen Filmtitel
  */
-class Movie
+data class Movie (
+    val stringResource: Int,
+    val imageResource: Int
+        )
+
